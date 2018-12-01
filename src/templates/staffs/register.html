@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">Direction Mock </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/staffs/register">Register</a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+
+{% if error|length > 0 %}
+<label> {{ error }}</label>
+{% endif %}
+
+<div class="container login-form">
+    <form id="register-form-staff" action='/staffs/register' method="post">
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" id="name" name="name">
+        </div>
+         <div class="form-group">
+            <label>Phone</label>
+            <input type="text" class="form-control" id="phone" name="phone">
+        </div>
+         <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" id="password" name="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Register </button>
+
+    </form>
+</div>
+
+
+{% endblock %}}

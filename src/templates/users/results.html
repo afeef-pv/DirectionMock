@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="">Direction Mock </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/users/profile">Home <span class="sr-only">(current)</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="">Results</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/logout">Log Out</a>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>
+
+
+<script>
+    var marks=[];
+    var subjects = [];
+</script>
+<div class="container">
+    {% if results|length > 0 %}
+    <ul>
+        {% for result in results %}
+        <li> {{ result.subject }} &nbsp;{{ result.mark }} &nbsp; {{ result.date }} </li>
+        <script>
+
+                 subjects.push({{ result.subject|safe }});
+        </script>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+
+
+
+<script type="text/javascript">
+
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+
+      function drawChart() {
+         var table = [];
+         table.push(['Subject','Marks']);
+         for (var i = 0; i < marks.length; i++) {
+              var temp=[];
+              temp.push(i);
+              temp.push(i*10);
+              table.push(temp);
+            }
+        var table1 = [
+          ['Year', 'Sales', 'Expenses'],
+          [subjects[1],  1000,      400],
+          ['tuesday',  1170,      460],
+          ['wednesday',  660,       1120],
+          ['saturday',  1030,      540]
+        ]
+        var data = google.visualization.arrayToDataTable(table1);
+
+        var options = {
+          title: 'Student Performance',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+
+      }
+
+</script>
+
+
+<div id="chart_div"> </div>
+</body>
+</html>
+
+{% endblock %}

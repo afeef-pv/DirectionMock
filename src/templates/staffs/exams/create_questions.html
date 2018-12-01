@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="">Direction Mock </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/staffs/profile">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/staffs/manage_students">Manage Students <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/exams/organise_tests">Tests</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/staffs/logout">Log Out</a>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>
+
+<div class="container">
+    <form id="add-form" action='/exams/add_question/{{test._id}}' method="post">
+    <div class="form-group">
+            <label>Question</label>
+            <input type="text" class="form-control" id="question" name="question">
+    </div>
+    <div class="form-group">
+            <label>Option A</label>
+            <input type="text" class="form-control" id="a" name="a">
+    </div>
+    <div class="form-group">
+            <label>Option B</label>
+            <input type="text" class="form-control" id="b" name="b">
+    </div>
+    <div class="form-group">
+            <label>Option C</label>
+            <input type="text" class="form-control" id="c" name="c">
+    </div>
+    <div class="form-group">
+            <label>Option D</label>
+            <input type="text" class="form-control" id="d" name="d">
+    </div>
+     <div class="form-group">
+            <label>Answer</label>
+            <input type="text" class="form-control" id="answer" name="answer">
+    </div>
+         <button type="submit" class="btn btn-primary"> Add </button>
+    </form>
+
+    <form id="create-form" action='/exams/create_question/{{ test._id }}' method="post">
+            <label>Subject</label>
+            <input type="text" class="form-control" id="subject" name="subject">
+            <button type="submit" class="btn btn-primary"> Create </button>
+    </form>
+
+</div>
+
+</body>
+</html>
+
+{% endblock %}

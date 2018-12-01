@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="">Direction Mock </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/users/profile">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/profile">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/logout">Log Out</a>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>
+
+<div class="container login-form" id="slider">
+    <form id="submit_exam" action="/exams/submit_exam/{{ paper._id }}" method="post">
+        <span id="heading">{{ paper.subject }}</span>
+        <ul id="sliderWrap">
+        {% for question in paper.questions %}
+            <li class="question">{{ question.question }} <br>
+
+            {% for option in question.options %}
+                  <input type="radio" name="{{ question.question }}" value="{{ option }}"> {{ option }} <br>
+            {% endfor %}
+                <hr>
+             </li>
+        {% endfor %}
+            </ul>
+
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;
+        <button type="submit" class="btn" > Submit </button>
+
+   </form>
+    </div>
+<div class="container">
+    <button id="prev"  class="btn" onclick="slideLeft()">Prevs</button>
+    <button id="next"  class="btn" onclick="slideRight()">Next</button>
+</div>
+
+
+<script>
+    var sliderText = document.querySelectorAll('.question');
+    var next = document.getElementById('next');
+    var prev = document.getElementById('prev');
+    var current = -1;
+    var max = sliderText.length - 1;
+
+     function reset(){
+        for(let i = 0; i < sliderText.length; i++){
+            sliderText[i].style.display = 'none';
+        }
+     }
+
+     function startSlide(){
+        reset();
+        sliderText[0].style.display = 'block';
+
+     }
+     function slideRight(){
+        current++;
+        if(current > max){
+            current = 0;
+         }
+         reset()
+         sliderText[current].style.display = 'block';
+     }
+
+     function slideLeft(){
+        current--;
+        if(current < 0){
+            current = max;
+         }
+         reset()
+        sliderText[current].style.display = 'block';
+     }
+
+
+
+     next.addEventListener('click',slideRight());
+     startSlide();
+</script>
+
+
+</body>
+</html>
+
+{% endblock %}

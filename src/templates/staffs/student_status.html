@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="">Direction Mock </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/staffs/profile">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/staffs/manage_students">Manage Students <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/staffs/organise_test">Tests</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/staffs/logout">Log Out</a>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>
+
+{% if message|length > 0 %}
+<label>{{ message }}</label>
+{% endif %}
+
+<div class="container login-form">
+
+    <form action="/staffs/student_status" method="post">
+        <div class="form-group">
+            <label>Phone</label>
+            <input type="text" class="form-control" id="phone" name="phone">
+        </div>
+        <button type="submit" class="btn btn-primary">Get  </button>
+
+    </form></div>
+
+
+</body>
+</html>
+
+{% endblock %}

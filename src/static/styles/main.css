@@ -1,0 +1,39 @@
+.login-form{
+    max-width:500px;
+}
+
+#slider {
+    position:relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+    background-color: rgba(0.9,0.25,0,0.2);
+}
+
+#prev, #next
+{
+
+    line-height: 50px;
+    text-shadow: 0 0 20px rgba(0,0,0,0.6);
+    test-align: center;
+    color: purple;
+    text-decoration: none;
+    position: absolute;
+    top: 50%;
+    margin:100px;
+
+    transition: all 150ms ease;
+    &:hover {
+        background-color: rgba(0,0,0,0.5);
+        text-shadow: 0;
+    }
+}
+
+#prev {
+    left: 10px;
+}
+
+#next {
+    right: 10px;
+}

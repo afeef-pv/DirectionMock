@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="">Direction Mock </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item ">
+        <a class="nav-link" href="/staffs/profile">Home <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/staffs/manage_students">Manage Students </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/study_materials/organise_tests">Study Materials</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/exams/organise_tests">Tests</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/staffs/logout">Log Out</a>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>
+
+<div class="container">
+    <ul>
+        <li><a href ="/study_materials/view_materials">View Materials</a></li>
+        <li><a href ="/study_materials/create_material">Create Material</a></li>
+    </ul>
+
+
+</div>
+
+
+</body>
+</html>
+
+{% endblock %}
